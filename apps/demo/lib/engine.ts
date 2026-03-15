@@ -173,13 +173,53 @@ export const linkSuggestionQueue: Array<{
 
 export function getEngine(): Engine {
   if (!engine) {
-    const db = createDatabase('./demo.db')
     const providers = createProviders()
+    console.log('[engine] Initializing database...')
+    let db: ReturnType<typeof createDatabase>
+    try {
+      db = createDatabase(':memory:')
+      console.log('[engine] Database created OK')
+    } catch (e) {
+      console.error('[engine] Database creation failed:', e)
+      throw e
+    }
+
+    let store: SqliteStore
+    try {
+      store = new SqliteStore(db)
+      console.log('[engine] Store created OK')
+    } catch (e) {
+      console.error('[engine] Store creation failed:', e)
+      throw e
+    }
+
+    let keywordSearch: SqliteKeywordSearch
+    try {
+      keywordSearch = new SqliteKeywordSearch(db)
+      console.log('[engine] KeywordSearch created OK')
+    } catch (e) {
+      console.error('[engine] KeywordSearch creation failed:', e)
+      throw e
+    }
+
+    // sqlite-vec may fail to load in some environments
+    let vectorSearch: import('@lang-context/core').VectorSearchProvider
+    try {
+      vectorSearch = new SqliteVectorSearch(db, providers.embeddingDimensions)
+    } catch (e) {
+      console.warn('sqlite-vec not available, using no-op vector search:', (e as Error).message)
+      // Fallback: no-op vector search (keyword search still works)
+      vectorSearch = {
+        async upsert() {},
+        async search() { return [] },
+        async delete() {},
+      }
+    }
 
     engine = createEngine({
-      store: new SqliteStore(db),
-      vectorSearch: new SqliteVectorSearch(db, providers.embeddingDimensions),
-      keywordSearch: new SqliteKeywordSearch(db),
+      store,
+      vectorSearch,
+      keywordSearch,
       chat: providers.chat,
       judge: providers.judge,
       embedding: providers.embedding,
