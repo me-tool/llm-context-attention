@@ -1,7 +1,9 @@
 {
   "name": "@lang-context/store-sqlite",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "description": "SQLite storage provider for Lang Context Attention — persistence, vector search (sqlite-vec), and BM25 keyword search (FTS5) in a single file database.",
   "type": "module",
+  "homepage": "https://github.com/me-tool/lang-context-attention#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {

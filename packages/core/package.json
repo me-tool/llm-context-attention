@@ -1,7 +1,9 @@
 {
   "name": "@lang-context/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "description": "Topic-aware context routing engine for LLM conversations. Auto-clusters messages by topic, assembles only relevant context using hybrid retrieval (vector + BM25 + RRF) and LLM judgment.",
   "type": "module",
+  "homepage": "https://github.com/me-tool/lang-context-attention#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {

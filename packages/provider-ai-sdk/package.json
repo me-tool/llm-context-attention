@@ -1,7 +1,9 @@
 {
   "name": "@lang-context/provider-ai-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "description": "Vercel AI SDK providers for Lang Context Attention — connects the routing engine to OpenAI, Anthropic, Google, and 20+ LLM providers with structured JSON output.",
   "type": "module",
+  "homepage": "https://github.com/me-tool/lang-context-attention#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
