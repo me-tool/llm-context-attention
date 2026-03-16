@@ -22,5 +22,13 @@
   "devDependencies": {
     "typescript": "^5.7.0",
     "vitest": "^3.0.0"
-  }
+  },
+  "files": ["dist", "package.json", "README.md"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/me-tool/lang-context-attention",
+    "directory": "packages/core"
+  },
+  "license": "MIT",
+  "keywords": ["llm", "context", "attention", "routing", "topic", "conversation", "ai"]
 }
