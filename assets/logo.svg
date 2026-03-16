@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="logoGrad1" x1="0" y1="0" x2="200" y2="200">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="logoGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="logoGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="200" rx="40" fill="#0f0f23"/>
+
+  <!-- Brain/network nodes representing attention routing -->
+  <!-- Central node -->
+  <circle cx="100" cy="90" r="18" fill="url(#logoGrad1)" filter="url(#logoGlow)"/>
+  <circle cx="100" cy="90" r="8" fill="#0f0f23"/>
+  <circle cx="100" cy="90" r="4" fill="#c4b5fd"/>
+
+  <!-- Topic nodes -->
+  <circle cx="50" cy="140" r="12" fill="#6366f1" opacity="0.8"/>
+  <circle cx="100" cy="155" r="12" fill="#06b6d4" opacity="0.8"/>
+  <circle cx="150" cy="140" r="12" fill="#f59e0b" opacity="0.8"/>
+
+  <!-- Connection lines (attention paths) -->
+  <line x1="90" y1="105" x2="55" y2="132" stroke="#6366f1" stroke-width="2.5" opacity="0.7"/>
+  <line x1="100" y1="108" x2="100" y2="143" stroke="#06b6d4" stroke-width="2.5" opacity="0.7"/>
+  <line x1="110" y1="105" x2="145" y2="132" stroke="#f59e0b" stroke-width="2.5" opacity="0.7"/>
+
+  <!-- Active attention beam (highlighted path) -->
+  <line x1="90" y1="105" x2="55" y2="132" stroke="#a78bfa" stroke-width="4" opacity="0.4" stroke-linecap="round"/>
+
+  <!-- Input arrow -->
+  <line x1="100" y1="40" x2="100" y2="72" stroke="#e2e8f0" stroke-width="2"/>
+  <polygon points="95,45 100,35 105,45" fill="#e2e8f0"/>
+
+  <!-- Text -->
+  <text x="100" y="188" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="11" font-weight="700" letter-spacing="2">L C A</text>
+</svg>
